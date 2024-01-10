@@ -1,0 +1,65 @@
+test
+---
+tags:
+  - 測試
+
+security:
+  - basicAuth:
+    - basicAuth
+
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/definitions/MomoWarehouseIn'
+
+definitions:
+  MomoWarehouseIn:
+    type: object
+    required:
+      - firm
+    properties:
+      firm:
+        type: string
+        description: 廠商編號
+        example: "016889"
+      time_from:
+        typeOf:
+          - type: integer
+          - type: string
+        description:
+          momo對帳訂單明細查詢時間開始日，接收參數：<br>
+          1. 時間戳(1659283200)<br>
+          2. 字符串(2022-08-01 00:00:00 +0800)
+        example: "2022-10-01 00:00:00 +0800"
+      time_to:
+        typeOf:
+          - type: integer
+          - type: string
+        description:
+          momo對帳訂單明細查詢時間結束日，接收參數：<br>
+          1. 時間戳(1660492799)<br>
+          2. 字符串(2022-08-14 23:59:59 +0800)
+        example: "2022-10-14 23:59:59 +0800"
+      warehouse_in_id:
+        type: string
+        description: 入庫單號
+
+responses:
+  200:
+    description: The product inserted in the database
+    content:
+      application/json:
+        schema:
+          type: object
+          required: 
+            - success
+            - message
+          properties:
+            success:
+              type: boolean
+            message:
+              type: string
+              example: ""
+            data:
+              type: object
