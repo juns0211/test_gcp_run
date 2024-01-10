@@ -4,7 +4,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return 'juns is learning gcp'
+    return 'juns is learning gcp.....'
 
 if __name__ == '__main__':
     import uvicorn
